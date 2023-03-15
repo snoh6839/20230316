@@ -46,20 +46,23 @@ WHERE emp_no IN (500000, 500001);
 --     FROM salaries
 -- );
 -- 
--- SELECT first_name
--- FROM employees
--- WHERE emp_no = (
---     SELECT emp_no 
---     FROM salaries 
---     ORDER BY salary DESC 
---     LIMIT 1
--- );
+SELECT emp_no, first_name
+FROM employees
+WHERE emp_no = (
+    SELECT emp_no 
+    FROM salaries 
+    ORDER BY salary
+    LIMIT 1
+) OR emp_no = (
+    SELECT emp_no 
+    FROM salaries 
+    ORDER BY salary DESC 
+    LIMIT 1
+);
 
 SELECT e.first_name, s.salary, e.emp_no
 FROM salaries s
 JOIN employees e ON s.emp_no = e.emp_no
-JOIN dept_emp de ON de.emp_no = e.emp_no
-JOIN departments d ON d.dept_no = de.dept_no
 WHERE s.salary IN (
     SELECT MAX(salary) 
     FROM salaries
