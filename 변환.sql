@@ -5,3 +5,5 @@
 
 -- SELECT IFNULL(NULL,'aa');
 -- SELECT IFNULL('123','aa');
+
+-- SELECT CAST(1234 AS CHAR(4));
