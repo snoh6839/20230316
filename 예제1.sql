@@ -74,3 +74,31 @@ FROM salaries;
 SELECT AVG(salary) AS avg_499975
 FROM salaries
 WHERE emp_no = 499975;
+
+
+-- SELECT emp_no, first_name
+-- FROM employees
+-- WHERE emp_no IN (
+-- 	SELECT emp_no
+-- 	FROM salaries
+-- 	WHERE salary = (
+-- 		SELECT MAX(salary)
+-- 		FROM salaries
+-- 	)
+-- 	or salary = (
+-- 		SELECT MIN(salary)
+-- 		FROM salaries
+-- 	)
+-- )
+
+-- SELECT e.emp_no, e.first_name, s.salary
+-- FROM employees e, salaries s
+-- WHERE e.emp_no = s.emp_no
+-- AND s.salary = (
+--     SELECT MAX(salary) AS max_salary
+--     FROM salaries
+-- )
+-- OR s.salary = (
+--     SELECT MIN(salary) AS min_salary
+--     FROM salaries
+-- );
