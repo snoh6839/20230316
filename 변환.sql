@@ -7,3 +7,13 @@
 -- SELECT IFNULL('123','aa');
 
 -- SELECT CAST(1234 AS CHAR(4));
+
+SELECT
+		emp_no,
+		gender, 
+		CASE gender
+			when 'm' then '남자'
+			when 'f' then '여자'
+			ELSE ''
+		end
+FROM employees LIMIT 10;		
